@@ -33,6 +33,9 @@ export class PrayerTimes {
     private timezone: number = 0;
     private jDate: number = 0;
 
+    /**
+     * @soon add method get next prayer times
+     */
     constructor({ lat, lng, method, format = '24h' }: PrayerTimesOptions) {
         // Validate lat
         if (typeof lat !== 'number' || lat < -90 || lat > 90) {
