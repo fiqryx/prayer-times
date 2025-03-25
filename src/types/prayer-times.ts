@@ -1,3 +1,21 @@
+/**
+ * You need know: (types is need added)
+ * 
+ * - asr juristics:
+ *      - Standard  = Shafii, Maliki, Jafari, Hanbali
+ *      - Hanafi    = Hanafi
+ * 
+ * - midnight methods:
+ *      - Standard  = Mid Sunset to Sunrise
+ *      - Jafari    = Mid Sunset to Fajr
+ * 
+ * - highLat methods
+ *      - NightMiddle   = middle of night
+ *      - AngleBased    = angle/60th of night
+ *      - OneSeventh    = OneSeventh
+ *      - None          = None
+ */
+
 export const Times = {
     imsak: 'Imsak',
     fajr: 'Fajr',
@@ -18,9 +36,14 @@ export const Method = {
     karachi: 'University of Islamic Sciences, Karachi',
     tehran: 'Institute of Geophysics, University of Tehran',
     jafari: 'Shia Ithna-Ashari, Leva Institute, Qum',
-    kemenag: 'Shia Ithna-Ashari, Leva Institute, Qum',
+    kemenag: 'Kementerian Agama Republik Indonesia',
+    jakim: 'Jabatan Kemajuan Islam Malaysia',
 } as const;
 
+/**
+ * Prayer calculating methods
+ * @references https://praytimes.org/wiki/Calculation_Methods
+ */
 export const Methods: Methods = {
     mwl: { fajr: 18, isha: 17 },
     isna: { fajr: 15, isha: 15 },
@@ -29,7 +52,8 @@ export const Methods: Methods = {
     karachi: { fajr: 18, isha: 18 },
     tehran: { fajr: 17.7, isha: 14, maghrib: 4.5, midnight: 'Jafari' },
     jafari: { fajr: 16, isha: 14, maghrib: 4, midnight: 'Jafari' },
-    kemenag: { fajr: 20, isha: 18 }
+    kemenag: { fajr: 20, isha: 18 },
+    jakim: { fajr: 18, isha: 18 },
 } as const
 
 export type Method = keyof typeof Method;
