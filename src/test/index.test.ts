@@ -13,7 +13,7 @@ describe("prayer-times", () => {
     test("should create instance with correct configuration", () => {
         const prayer = new PrayerTimes(testConfig);
         expect(prayer).toBeInstanceOf(PrayerTimes);
-        expect(prayer.getMethod()).toBe('kemenag');
+        expect(prayer.getMethod()).toBe('kemenag'); // default auto with coordinates
     });
 
     test("should return daily prayer times", () => {

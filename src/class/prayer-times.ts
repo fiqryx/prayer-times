@@ -9,6 +9,11 @@ import {
     TimeFormat,
 } from "@/types/prayer-times";
 
+/**
+ * Prayer times calculate for any location around the world, 
+ * based on a variety of calculation methods currently used in Muslim communities.
+ * @docs https://praytimes.org/wiki/Code_Manual
+ */
 export class PrayerTimes {
     private times = Times;
     private methods: Methods = Methods;
