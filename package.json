@@ -3,10 +3,12 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
+    "build": "tsup",
     "dev": "bun run ./src/index.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "tsup": "^8.4.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

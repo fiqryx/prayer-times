@@ -1,21 +1,6 @@
 /**
- * You need know: (types is need added)
- * 
- * - asr juristics:
- *      - Standard  = Shafii, Maliki, Jafari, Hanbali
- *      - Hanafi    = Hanafi
- * 
- * - midnight methods:
- *      - Standard  = Mid Sunset to Sunrise
- *      - Jafari    = Mid Sunset to Fajr
- * 
- * - highLat methods
- *      - NightMiddle   = middle of night
- *      - AngleBased    = angle/60th of night
- *      - OneSeventh    = OneSeventh
- *      - None          = None
+ * Prayer times names
  */
-
 export const Times = {
     imsak: 'Imsak',
     fajr: 'Fajr',
@@ -27,7 +12,9 @@ export const Times = {
     isha: 'Isha',
     midnight: 'Midnight',
 } as const;
-
+/**
+ * Prayers times method names
+ */
 export const Method = {
     mwl: 'Muslim World League',
     isna: 'Islamic Society of North America (ISNA)',
@@ -54,13 +41,32 @@ export const Methods: Methods = {
     jafari: { fajr: 16, isha: 14, maghrib: 4, midnight: 'Jafari' },
     kemenag: { fajr: 20, isha: 18 },
     jakim: { fajr: 18, isha: 18 },
-} as const
-
+} as const;
+/**
+ * - Standard  = Shafii, Maliki, Jafari, Hanbali
+ * - Hanafi    = Hanafi
+ */
+export type AsrJuristic = 'Standard' | 'Hanafi'
+/**
+ * - Standard  = Mid Sunset to Sunrise
+ * - Jafari    = Mid Sunset to Fajr
+ */
+export type MidNight = 'Standard' | 'Jafari'
+/**
+ * - NightMiddle   = middle of night
+ * - AngleBased    = angle/60th of night
+ * - OneSeventh    = OneSeventh
+ * - None          = None
+ */
+export type HightLatitude = 'NightMiddle' | 'AngleBased' | 'OneSeventh' | 'None'
 export type Method = keyof typeof Method;
 export type Times = keyof typeof Times;
-export type Params = { [k in Times]?: string | number };
+export type Params = {
+    [K in Times]?: K extends 'midnight' ? MidNight
+    : K extends 'asr' ? AsrJuristic : string | number
+};
 export type Methods = { [k in Method]: Params };
-export type TimeFormat = '24h' | '12h' | 'datetime' | 'float';
+export type TimeFormat = '24h' | '12h' | '12hNS' | 'float' | 'datetime';
 
 export type GetTimeOptions<T> = {
     lat?: number
@@ -74,6 +80,6 @@ export type GetTimeOptions<T> = {
 export interface PrayerTimesOptions {
     lat: number
     lng: number
-    format?: TimeFormat
     method?: Method
+    format?: TimeFormat
 }

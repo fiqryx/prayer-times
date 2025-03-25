@@ -17,5 +17,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "src/test"]
+  "exclude": ["node_modules", "dist", "src/test", "*.config.*"]
 }

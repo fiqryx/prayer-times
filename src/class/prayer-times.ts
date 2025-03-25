@@ -7,12 +7,12 @@ import {
     GetTimeOptions,
     PrayerTimesOptions,
     TimeFormat,
+    HightLatitude,
 } from "@/types/prayer-times";
 
 /**
  * Prayer times calculate for any location around the world, 
  * based on a variety of calculation methods currently used in Muslim communities.
- * @docs https://praytimes.org/wiki/Code_Manual
  */
 export class PrayerTimes {
     private times = Times;
@@ -22,7 +22,7 @@ export class PrayerTimes {
 
     private method: Method;
     private format: TimeFormat;
-    private highLats: string = 'NightMiddle';
+    private highLats: HightLatitude = 'NightMiddle';
     private iterations: number = 1;
     private suffixes: string[] = ['AM', 'PM'];
     private offset: Record<string, number> = {};
@@ -61,8 +61,9 @@ export class PrayerTimes {
         for (const x in this.methods) {
             const params = this.methods[x as Method];
             for (const y in this.default) {
-                if (!params[y as Times]) {
-                    params[y as Times] = this.default[y as Times]
+                const key = y as keyof typeof params;
+                if (!params[key]) {
+                    params[key] = this.default[key] as any;
                 }
             }
         }
@@ -70,7 +71,8 @@ export class PrayerTimes {
         // init state with method
         const params = this.methods[this.method];
         for (const id in params) {
-            this.params[id as Times] = params[id as Times];
+            const key = id as keyof typeof params;
+            this.params[key] = params[key] as any;
         }
 
         // init offsets
@@ -88,7 +90,8 @@ export class PrayerTimes {
 
     adjust(params: Params) {
         for (const id in params) {
-            this.params[id as Times] = params[id as Times];
+            const key = id as keyof typeof params;
+            this.params[key] = params[key] as any;
         }
     }
 
@@ -401,8 +404,8 @@ export class PrayerTimes {
     /**
      * convert hours to day portions 
      */
-    private dayPortion(times: Params) {
-        const result: Params = {};
+    private dayPortion(times: Record<Times, number>) {
+        const result: Object = {};
         for (const i in times) {
             (result as any)[i] = (times as any)[i] / 24;
         }
