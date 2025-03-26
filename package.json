@@ -4,9 +4,11 @@
   "type": "module",
   "scripts": {
     "build": "tsup",
-    "dev": "bun run ./src/index.ts"
+    "dev": "bun x vite docs",
+    "debug": "bun run ./src/debug.ts"
   },
   "devDependencies": {
+    "@swc/core": "^1.11.13",
     "@types/bun": "latest",
     "tsup": "^8.4.0"
   },

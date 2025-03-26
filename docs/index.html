@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayer Times</title>
+    <style>
+      body,
+      tr,
+      form {
+        font-family: tahoma;
+        font-size: 12px;
+        color: #404040;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      pre {
+        font-family: courier, serif;
+        size: 10pt;
+        margin: 0px 8px;
+      }
+      input {
+        font-size: 12px;
+      }
+      .header {
+        background: #eef;
+        border-bottom: 1px solid #ddd;
+        padding: 7px;
+      }
+      .caption {
+        font-size: 20px;
+        color: #d95722;
+        text-align: center;
+        width: 10em;
+      }
+      .arrow {
+        font-weight: bold;
+        text-decoration: none;
+        color: #3d3d3d;
+      }
+      .arrow:hover {
+        text-decoration: underline;
+      }
+      .command {
+        font-weight: bold;
+        text-decoration: none;
+        color: #aaaaaa;
+      }
+      .command:hover {
+        text-decoration: underline;
+      }
+      .timetable {
+        border-width: 1px;
+        border-style: outset;
+        border-collapse: collapse;
+        border-color: gray;
+        margin: 0 auto;
+      }
+      .timetable td {
+        border-width: 1px;
+        border-spacing: 1px;
+        padding: 1px;
+        border-style: inset;
+        border-color: #cccccc;
+      }
+      .head-row {
+        color: black;
+        background-color: #eef;
+      }
+      .today-row {
+        background-color: #f8f7f4;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <form class="form" action="javascript:update();">
+        Latitude:
+        <input type="text" id="latitude" size="2" />&nbsp; Longitude:
+        <input type="text" id="longitude" size="2" />&nbsp; Time Zone:
+        <input type="text" id="timezone" size="2" />&nbsp; Method:
+        <select id="methods" size="1" style="font-size: 12px">
+          <!--  -->
+        </select>
+      </form>
+    </div>
+
+    <br />
+
+    <table align="center">
+      <tr>
+        <td>
+          <a id="prev" href="javascript:void(0);" class="arrow">&lt;&lt;</a>
+        </td>
+        <td id="table-title" class="caption"></td>
+        <td>
+          <a id="next" href="javascript:void(0);" class="arrow">&gt;&gt;</a>
+        </td>
+      </tr>
+    </table>
+
+    <br />
+
+    <table id="timetable" class="timetable">
+      <!--  -->
+    </table>
+
+    <div align="center" style="margin-top: 7px">
+      Time Format:
+      <a
+        id="time-format"
+        href="javascript:void(0);"
+        title="Change clock format"
+        class="command"
+      ></a>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

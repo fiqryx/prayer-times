@@ -2,10 +2,11 @@ import { defineConfig } from "tsup"
 
 export default defineConfig({
   clean: true,
-  dts: true,
-  entry: [
-    "src/class/prayer-times.ts"
-  ],
+  dts: false,
+  entry: {
+    "index": "src/class/prayer-times.ts",
+    "misc": "src/types/prayer-times.ts",
+  },
   format: ["esm"],
   sourcemap: false,
   minify: true,
