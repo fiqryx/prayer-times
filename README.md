@@ -69,3 +69,7 @@ return an associative array containing 9 prayer times stored in an object.
 | Maghrib  | Soon after sunset. |
 | Isha     | The time at which darkness falls and there is no scattered light in the sky. |
 | Midnight | The mean time from sunset to sunrise (or from sunset to Fajr, in some schools of thought). |
+
+
+---
+Original sources [PrayTimes.org](https://praytimes.org/code/)
